@@ -1,4 +1,4 @@
-
+import { NavBar } from "components/Common/Navigation/NavBar";
 import EditForm from "components/ProfileEdit/EditForm";
 import React from "react";
 import tw from "tailwind-styled-components";
@@ -17,18 +17,16 @@ w-full
 h-[calc(100vh-48px)]
 flex
 flex-col
-
+justify-center
 items-center
 relative
-bg-[#180E2C]
-pt-5
+bg-gradient-to-b
+from-[#0A031C]
+from-80%
+to-[#100530]
 `;
 
 const Title = tw.div`
-
-mb-5
-text-white
-text-xl
-font-bold
+text-[#FDFD96]
 `;
 export default ProfileEdit;

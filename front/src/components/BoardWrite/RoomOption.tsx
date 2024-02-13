@@ -1,12 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { searchManagingRoom } from "api/Room";
 import { SearchManagingResponses } from "models/Room.interface";
-import { userInfo } from "os";
 import React, { useEffect, useState } from "react";
 import tw from "tailwind-styled-components";
 
 type RoomOptionProps = {
-  editRoom?: string;
+  provoke: boolean;
   selectRoom: (room: number) => void;
 };
 
@@ -15,19 +14,13 @@ type RoomButtonProps = {
   active: boolean;
 };
 function RoomOption(props: RoomOptionProps) {
-  const {selectRoom, editRoom} = props;
-
   const dummy = [{ roomId: 42, title: "SSAFY 9기", full: true }];
   const [roomList, setRoomList] = useState<SearchManagingResponses[]>(dummy);
 
-  const { data: ManagedRoomData,refetch } = useQuery<SearchManagingResponses[], Error>({
+  const { data: ManagedRoomData } = useQuery<SearchManagingResponses[], Error>({
     queryKey: ["managedRoomData"],
     queryFn: () => searchManagingRoom({}),
   });
-
-  useEffect(()=>{
-    refetch();
-  },[]);
 
   useEffect(() => {
     setRoomList(ManagedRoomData!);
@@ -40,9 +33,17 @@ function RoomOption(props: RoomOptionProps) {
     setSelected(room.roomId);
     props.selectRoom(room.roomId);
   };
+
+  useEffect(() => {
+    // 가능한 방 fetch 해오기
+    if (props.provoke) {
+      console.log("provoke");
+    }
+  }, [props.provoke]);
+
   return (
     <Wrapper>
-      {roomList && editRoom?.length === 0 && (
+      {roomList ? (
         roomList.map((room) => (
           <RoomButton
             key={room.roomId}
@@ -53,22 +54,9 @@ function RoomOption(props: RoomOptionProps) {
             {room.title}
           </RoomButton>
         ))
+      ) : (
+        <div>방이 없습니다.</div>
       )}
-      {
-        roomList && editRoom?.length !== 0 && (
-          roomList.map((room) => (
-            <RoomButton
-              key={room.roomId}
-              onClick={() => selectedHandler(room)}
-              selected={selected === room.roomId}
-              active={room.title === editRoom}
-            >
-              {room.title}
-            </RoomButton>
-          ))
-        )
-
-      }
     </Wrapper>
   );
 }

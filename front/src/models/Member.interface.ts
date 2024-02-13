@@ -26,21 +26,3 @@ export interface MemberQuery {
     },
   ];
 }
-
-export interface MemberUpdateParams {
-  name: string;
-  password: string;
-  nickname: string;
-  link: string;
-  email: string;
-  description: string;
-  feature: string;
-}
-
-export interface NicknameCheckParams {
-  nickname: string;
-}
-
-export interface EmailCheckParams {
-  email: string;
-}

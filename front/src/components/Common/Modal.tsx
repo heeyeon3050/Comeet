@@ -41,8 +41,6 @@ function Modal(props: ModalProps) {
 
   const [noteState, setNoteState] = React.useState<string>("list");
   const [noteNo, setNoteNo] = React.useState<number>(0);
-  const [writer, setWriter] = React.useState<string>("");
-
   const modalToggleHandler = () => {
     toggleModal();
   };
@@ -53,9 +51,8 @@ function Modal(props: ModalProps) {
       setNoteNo(no);
     }
   };
-
-  const setWriterHandler = (writerId: string) => {
-    setWriter(writerId);
+  const setStateHandler = (state: string) => {
+    setNoteState(state);
   };
 
   return (
@@ -86,18 +83,10 @@ function Modal(props: ModalProps) {
           <MessageList swapState={setNoteStateHandler}></MessageList>
         ) : null}
         {option === "message" && noteState === "write" ? (
-          <MessageWrite
-            swapState={setNoteStateHandler}
-            writer={writer}
-            setWriter={setWriterHandler}
-          />
+          <MessageWrite />
         ) : null}
         {option === "message" && noteState === "read" ? (
-          <MessageRead
-            noteNo={noteNo}
-            swapState={setNoteStateHandler}
-            setWriter={setWriterHandler}
-          />
+          <MessageRead noteNo={noteNo} swapState={setNoteStateHandler} />
         ) : null}
       </ModalContainer>
     </Wrapper>

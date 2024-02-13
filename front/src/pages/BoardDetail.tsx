@@ -12,9 +12,8 @@ export const BoardDetail = () => {
       <WritingContainer>
         <BoardDetailWritingTotal boardId={parseInt(boardId!)} />
       </WritingContainer>
-      <Boarder/>
       <CommentContainer>
-        <BoardDetailComment boardId={parseInt(boardId!)} />
+        <BoardDetailComment />
       </CommentContainer>
     </TotalContainer>
   );
@@ -29,20 +28,16 @@ items-center
 bg-[#070311]
 pt-16
 pb-20
-space-y-5
 min-h-svh
+
 `;
 
 const WritingContainer = tw.div`
-w-1/2
+w-[750px]
+mb-5
+border-b
 `;
 
-const Boarder = tw.div`
-h-[1px]
-bg-white
-w-1/2
-`
-
 const CommentContainer = tw.div`
-w-1/2
+max-w-[750px]
 `;

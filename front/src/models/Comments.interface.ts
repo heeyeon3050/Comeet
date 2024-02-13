@@ -9,7 +9,6 @@ export type CreateCommentResponse = number;
 
 export interface SearchCommentParams {
   boardId: number;
-  page: number;
 }
 
 export interface SearchCommentContent {
@@ -24,8 +23,6 @@ export interface SearchCommentContent {
 export interface SearchCommentResponse {
   content: SearchCommentContent[];
   pageable: Pageable;
-  last: boolean;
-  numberOfElements: number;
 }
 
 export interface ModifyCommentParams {

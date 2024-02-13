@@ -36,9 +36,6 @@ const userSlice = createSlice({
     storeMemberId: (state, action: PayloadAction<string>) => {
       state.user.memberId = action.payload;
     },
-    decNoteNumber: (state) => {
-      state.user.unreadNoteCount = state.user.unreadNoteCount - 1;
-    },
   },
 });
 
@@ -53,5 +50,5 @@ export const setupUserStatePersistence = (store: Store) => {
   });
 };
 
-export const { login, logout, storeMemberId,decNoteNumber } = userSlice.actions;
+export const { login, logout, storeMemberId } = userSlice.actions;
 export default userSlice.reducer;

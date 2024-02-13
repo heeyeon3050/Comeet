@@ -8,32 +8,28 @@ import HotBoardIcon from "assets/img/hot-board.svg";
 import TipBoardIcon from "assets/img/tip-board.svg";
 import PromBoardIcon from "assets/img/promotion-board.svg";
 import AskBoardIcon from "assets/img/ask-board.svg";
-import { SearchBoardContent } from "models/Board.interface";
 
-export const FreeBoardListLink = (props: SearchBoardContent) => {
+export const FreeBoardListLink = (props: BoardListProps) => {
   let category = "";
   let icon = "";
+
   switch (props.category) {
-    case "CHAT":
-      category = "잡담";
+    case "팁/정보":
+      category = "팁/정보";
       icon = TipBoardIcon;
       break;
-    case "TIP":
-      category = "팁";
-      icon = TipBoardIcon;
-      break;
-    case "PROMOTION":
+    case "구인구직":
       category = "구인구직";
       icon = PromBoardIcon;
       break;
-    case "QUESTION":
+    case "질문하기":
       category = "질문하기";
       icon = AskBoardIcon;
       break;
   }
 
   return (
-    <Link to={`/free-board/${props.id}`}>
+    <Link to="/recruit-board/1">
       <TotalContainer>
         <CenterContainer>
           <TitleAndCategoryContainer>
@@ -44,7 +40,7 @@ export const FreeBoardListLink = (props: SearchBoardContent) => {
           <div className="flex">
             <WriterContainer>
               <WriterImg src={props.writerImage} alt="wrtierImg" />
-              <WriterNicname>{props.writerNickname}</WriterNicname>
+              <WriterNicname>{props.writerNicname}</WriterNicname>
             </WriterContainer>
             <WriteDate>{props.createdAt}</WriteDate>
             <LikeContatiner>
