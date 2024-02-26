@@ -3,6 +3,12 @@
 ![COMEET](./doc/COMEET.png)
 
 <hr>
+<br/>
+
+## 🎬 UCC
+https://youtu.be/o_lnhzbL6dk
+
+<br/>
 
 ## 📌 서비스 소개
 
